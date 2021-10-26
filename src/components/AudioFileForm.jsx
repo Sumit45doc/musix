@@ -1,26 +1,27 @@
 import React,{useState} from 'react'
 
-function AudioFileForm() {
+function AudioFileForm(props) {
+    const { setAudioData } = props;
 
-    const [file, setFile] = useState(null);
+    const [fileData, setFileData] = useState(null);
 
     const handleFile = (e) => {
         e.preventDefault();
-        setFile(e.target.files[0]);
+        setFileData(e.target.files[0]);
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         let reader = new FileReader();
-        reader.readAsArrayBuffer(file);
+        reader.readAsArrayBuffer(fileData);
 
         reader.onload = function () {
             const audioCtx = new AudioContext();
             audioCtx
                 .decodeAudioData(reader.result)
                 .then((data) => {
-                    console.log(data);
+                    setAudioData(data);
                 })
                 .catch((err) => {
                     console.log(err);

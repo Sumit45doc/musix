@@ -1,6 +1,7 @@
 import React from 'react'
 
-function PlayAudio() {
+function PlayAudio({audioData}) {
+    console.log({audioData})
     return (
         <div>
             play audio

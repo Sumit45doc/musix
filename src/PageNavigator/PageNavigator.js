@@ -4,21 +4,22 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import AudioFileForm from "./components/AudioFileForm";
-import PlayAudio from "./components/PlayAudio";
+import AudioFileForm from '../components/AudioFileForm';
+import PlayAudio from '../components/PlayAudio';
 
 function Navigator() {
     const [audioBuffer, setAudioBuffer] = useState(null);
+    const [fileName, setFileName] = useState(null);
 
     return (
         <div>
             <Router>
                 <Switch>
-                    <Route path="/upload-file">
-                        <AudioFileForm setAudioBuffer={setAudioBuffer} />
+                    <Route path="/audio-form">
+                        <AudioFileForm setFileName={setFileName} setAudioBuffer={setAudioBuffer} />
                     </Route>
                     <Route path="/play-audio">
-                        <PlayAudio audioBuffer={audioBuffer} />
+                        <PlayAudio fileName={fileName} audioBuffer={audioBuffer} />
                     </Route>
                 </Switch>
             </Router>

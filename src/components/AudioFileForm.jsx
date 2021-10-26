@@ -1,39 +1,27 @@
 import React,{useState} from 'react'
+import { useHistory } from "react-router-dom";
 
 function AudioFileForm(props) {
-    const { setAudioBuffer } = props;
-
+    const { setAudioBuffer, setFileName } = props;
+    const history = useHistory();
     const [fileData, setFileData] = useState(null);
 
     const handleFile = (e) => {
-        e.preventDefault();
         setFileData(e.target.files[0]);
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        let reader = new FileReader();
-        reader.readAsArrayBuffer(fileData);
-
-        reader.onload = function () {
-            const audioCtx = new AudioContext();
-            audioCtx
-                .decodeAudioData(reader.result)
-                .then((data) => {
-                    setAudioBuffer(data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        };
+        setFileName(fileData.name);
+        setAudioBuffer(fileData);
+        history.push("/play-audio");
     };
 
     return (
         <div>
              <form onSubmit={onSubmit}>
                 <input type='file' onChange={handleFile} />
-                <button type='submit'>Upload audio</button>
+                <button type='submit'>Upload Audio</button>
             </form>
         </div>
     )

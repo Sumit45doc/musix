@@ -3,12 +3,12 @@ import PlayAudio from "./components/PlayAudio";
 import React, { useState } from 'react';
 
 function App() {
-  const [audioData, setAudioData] = useState(null);
+  const [audioBuffer, setAudioBuffer] = useState(null);
 
   return (
     <div className="App">
-      <AudioFileForm setAudioData={setAudioData} />
-      <PlayAudio audioData={audioData} />
+      <AudioFileForm setAudioBuffer={setAudioBuffer} />
+      <PlayAudio audioBuffer={audioBuffer} />
     </div>
   );
 }

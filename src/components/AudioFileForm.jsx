@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 
 function AudioFileForm(props) {
-    const { setAudioData } = props;
+    const { setAudioBuffer } = props;
 
     const [fileData, setFileData] = useState(null);
 
@@ -21,7 +21,7 @@ function AudioFileForm(props) {
             audioCtx
                 .decodeAudioData(reader.result)
                 .then((data) => {
-                    setAudioData(data);
+                    setAudioBuffer(data);
                 })
                 .catch((err) => {
                     console.log(err);

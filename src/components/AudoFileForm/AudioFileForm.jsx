@@ -8,6 +8,7 @@ import FileUpload from "@mui/icons-material/FileUpload";
 import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
 function AudioFileForm(props) {
     const { setAudioBuffer, setFileName } = props;
@@ -48,7 +49,6 @@ function AudioFileForm(props) {
             </IconButton>
         </React.Fragment>
     );
-
     return (
         <Box
             sx={{
@@ -69,9 +69,10 @@ function AudioFileForm(props) {
                 sx={{
                     boxShadow: "0 0 15px -10px rgba(0, 0, 0, 0.75)",
                     padding: "10rem",
+                    disppay: "flex",
                 }}>
                 <form onSubmit={onSubmit}>
-                    <Stack direction='row' alignItems='center' spacing={2}>
+                    <Stack direction='column' alignItems='center' spacing={2}>
                         <label htmlFor='contained-button-file'>
                             <input
                                 accept='.mp3, .wav, .aac, .wma, .m4a'
@@ -111,7 +112,14 @@ function AudioFileForm(props) {
                             fontSize: "1.4rem",
                             textAlign: "center",
                         }}>
-                        File Name: {fileData.name}
+                        <Typography
+                            variant='h5'
+                            style={{
+                                marginLeft: "0.5rem",
+                                marginBottom: "1.5rem",
+                            }}>
+                            File Name: <span style={{fontWeight: "600"}} >{fileData.name}</span>
+                        </Typography>
                     </Box>
                 )}
             </Box>

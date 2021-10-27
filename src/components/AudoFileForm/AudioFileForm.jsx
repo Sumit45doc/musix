@@ -42,7 +42,7 @@ function AudioFileForm(props) {
                     <Stack direction='row' alignItems='center' spacing={2}>
                         <label htmlFor='contained-button-file'>
                             <input
-                                // accept='.mp3, .wav, .aac, .wma, .m4a'
+                                accept='.mp3, .wav, .aac, .wma, .m4a'
                                 id='contained-button-file'
                                 type='file'
                                 style={{ display: "none" }}

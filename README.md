@@ -42,6 +42,41 @@ To deploy this project run
   serve -s build
 ```
 
+## Screenshots
+
+### Home page
+![InitialUploadPage](/screenshots/initial-page.png)
+
+
+### Home Page after uploading audio file
+![Uploadedfile](/screenshots/afterUploading.png)
+
+### play Audio page
+
+![playaudiowaveform](/screenshots/playAudioPage.png)
+
+### Note Modal on click waveform 
+For writing note at any timestamp of audio 
+
+![Notes](/screenshots/note.png)
+
+### User Note Collection
+
+![UserNotes](/screenshots/usernotes.png)
+
+<br/>
+
+## Tech Stack
+
+**Client:** React, MaterialUi
+
+
+
+## Demo
+
+Insert gif or link to demo
+
+
 ## FAQ
 
 #### How many audio file can be upload at a time?
@@ -52,7 +87,9 @@ Answer One(1)
 
 Answer Yes
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+## Support
+
+For support, email b180010@nitsikkim.ac.in.
+

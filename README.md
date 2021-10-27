@@ -70,13 +70,6 @@ For writing note at any timestamp of audio
 
 **Client:** React, MaterialUi
 
-
-
-## Demo
-
-Insert gif or link to demo
-
-
 ## FAQ
 
 #### How many audio file can be upload at a time?

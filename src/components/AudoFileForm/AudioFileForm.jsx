@@ -5,11 +5,23 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Audiotrack from "@mui/icons-material/Audiotrack";
 import FileUpload from "@mui/icons-material/FileUpload";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
 
 function AudioFileForm(props) {
     const { setAudioBuffer, setFileName } = props;
     const history = useHistory();
     const [fileData, setFileData] = useState(null);
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const handleFile = (e) => {
         setFileData(e.target.files[0]);
@@ -20,10 +32,22 @@ function AudioFileForm(props) {
         setFileName(fileData.name);
         setAudioBuffer(fileData);
         if (fileData === null) {
-            
+            handleClick();
         }
         history.push("/play-audio");
     };
+
+    const action = (
+        <React.Fragment>
+            <IconButton
+                size='small'
+                aria-label='close'
+                color='inherit'
+                onClick={handleClose}>
+                <CloseIcon fontSize='small' />
+            </IconButton>
+        </React.Fragment>
+    );
 
     return (
         <Box
@@ -32,7 +56,15 @@ function AudioFileForm(props) {
                 justifyContent: "center",
                 alignItems: "center",
                 minHeight: "100vh",
+                backgroundColor: "#f9fafb",
             }}>
+            <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                message='Select audio file again.Something went wrong!!'
+                action={action}
+            />
             <Box
                 sx={{
                     boxShadow: "0 0 15px -10px rgba(0, 0, 0, 0.75)",
@@ -72,9 +104,16 @@ function AudioFileForm(props) {
                         </div>
                     </Stack>
                 </form>
-                {fileData?.name && <Box sx={{marginTop: "2rem",fontSize: "1.4rem",textAlign: "center" }} >
-                    File Name: {fileData.name}
-                </Box>}
+                {fileData?.name && (
+                    <Box
+                        sx={{
+                            marginTop: "2rem",
+                            fontSize: "1.4rem",
+                            textAlign: "center",
+                        }}>
+                        File Name: {fileData.name}
+                    </Box>
+                )}
             </Box>
         </Box>
     );
